@@ -9,42 +9,38 @@
     <title>Title</title>
 </head>
 <body>
-<form>
-    <table>
-        <tr>
-            <td style="text-align: center"><b>Amount</b></td>
-            <td style="text-align: center"><b>From currency</b></td>
-            <td style="text-align: center"><b>To currency</b></td>
-        </tr>
-        <tr>
-            <td> <input type="text" id="input"> </td>
-            <td>
-                <select id="from">
-                <option value="1">VietNam</option>
-                <option value="23000">USD</option>
-            </select>
-            </td>
-            <td>
-                <select id="to">
-                <option value="23000">USD</option>
-                <option value="1">VietNam</option>
-            </select>
-            </td>
-            <td>
-                <button onclick="display()">Convert</button>
-            </td>
-        </tr>
-    </table>
-    <h2 id="tien"> Result:</h2>
-    <script>
-        function display() {
-            let input = document.getElementById("input").value;
-            let from = document.getElementById("from").value;
-            let to = document.getElementById("to").value;
-            let usd = input * from / to
-            document.getElementById("tien").innerHTML = '='+ usd
+<b>Amount</b><br><input type="text" id="nhap" value="">
+<b>From Currency</b>
+<select id="donvi" style="width: 200px; height: 30px">
+    <option value="vnd">VND</option>
+    <option value="usd">USD</option>
+</select>
+<b>To Currency</b>
+<select id="donvi2" style="width: 200px; height: 30px">
+    <option value="vnd">VND</option>
+    <option value="usd">USD</option>
+</select>
+<button onclick="ketqua()" style="background-color: blueviolet; color: white">Convert</button>
+<h4 style="color: cornflowerblue" id="result">Result</h4>
+</body>
+<script>
+    function ketqua() {
+        let so = document.getElementById('nhap').value;
+        let hien1 = document.getElementById('donvi').value;
+        let hien2 = document.getElementById('donvi2').value;
+        let result = document.getElementById('result');
+        if (hien1 === hien2) {
+            result = so;
+
+        } else {
+            if (hien1 === 'vnd') {
+                result = so / 23000;
+            } else {
+                result = so * 23000;
+            }
         }
-    </script>
-</form>
+        document.getElementById('result').innerHTML = result + " " + hien2;
+    }
+</script>
 </body>
 </html>
